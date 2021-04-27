@@ -1,23 +1,3 @@
-# 创建项目
-&emsp;&emsp;基于vue-cli搭建vue3.0项目框架。
-```bash
-npx create @vue/cli vue3-cesium
-```
-
-&emsp;&emsp;下载cesium以及其声明文件
-```bash
-npm i -S cesium
-npm i -D @types/cesium
-```
-
-
-
-# 配置vue.config.js兼容cesium打包
-```bash
-npm i -D strip-pragma-loader
-```
-&emsp;&emsp;配置vue.config.js：
-```js
 const path = require("path");
 const webpack = require("webpack");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
@@ -116,35 +96,3 @@ module.exports = {
     };
   },
 };
-```
-# 创建ViewerContainer组件
-```vue
-<template>
-  <div id="cesiumContainer"></div>
-</template>
-
-<script>
-import { onMounted } from "vue";
-import { createWorldTerrain, Viewer } from "@plugins/cesium";
-
-export default {
-  name: "Home",
-  setup() {
-    onMounted(() => {
-      const viewer = new Viewer("cesiumContainer", {
-        terrainProvider: createWorldTerrain(),
-      });
-
-      viewer.cesiumWidget.creditContainer.style.display = "none";
-    });
-    return {};
-  },
-};
-</script>
-
-<style lang="less">
-#cesiumContainer {
-  height: 100vh;
-}
-</style>
-```
