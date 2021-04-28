@@ -1,8 +1,25 @@
 import { createStore } from "vuex";
+import { LocalForage, persistPlugin } from "@/plugins/localForage";
 
-export default createStore({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {},
-});
+export const state = {};
+
+export const mutations = {};
+
+export const actions = {};
+
+export const getters = {};
+
+export default async function extendStore() {
+  const savedState = await LocalForage.getItems();
+
+  return createStore({
+    plugins: [persistPlugin],
+    state: {
+      ...state,
+      ...savedState,
+    },
+    mutations,
+    actions,
+    getters,
+  });
+}
