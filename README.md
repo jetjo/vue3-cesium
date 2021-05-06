@@ -1,7 +1,7 @@
 # 创建项目
 &emsp;&emsp;基于vue-cli搭建vue3.0项目框架。
 ```bash
-npx create @vue/cli vue3-cesium
+npx @vue/cli create vue3-cesium
 ```
 
 &emsp;&emsp;下载cesium以及其声明文件
