@@ -18,5 +18,6 @@ export const nextHandler = (to, from, next, router) => {
 };
 
 export const loadView = (view) => {
-  return () => import(/* webpackChunkName: "[request]" */ `@views/${view}.vue`)
-}
+  return () =>
+    import(/* webpackChunkName: "[request]" */ `@/views/${view}.vue`);
+};

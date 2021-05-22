@@ -4,19 +4,14 @@
 
 <script>
 import { onMounted } from "vue";
-import { getCesiumViewer } from "@/utils/index";
-import { createWorldTerrain, Viewer } from "@/plugins/cesium/helpers";
-import CesiumLocale from "cesium-locale";
+import "cesium/Build/Cesium/Widgets/widgets.css";
+import { Viewer } from "cesium";
 
 export default {
   name: "Home",
   setup() {
     onMounted(() => {
-      const viewer = getCesiumViewer(Viewer, "cesiumContainer", {
-        terrainProvider: createWorldTerrain(),
-      });
-
-      new CesiumLocale(viewer);
+      new Viewer("cesiumContainer");
     });
     return {};
   },
